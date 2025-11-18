@@ -1,0 +1,84 @@
+name: Generate Badges
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  badges:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v4
+
+    - name: Checkout badge_tools repo
+      uses: actions/checkout@v4
+      with:
+        repository: electro-sb/badge_tools
+        token: ${{ secrets.PAT_TOKEN }}
+        path: badge_tools
+
+    - name: Prepare scripts folder
+      run: mkdir -p scripts
+
+    - name: Copy badge generator script
+      run: cp badge_tools/scripts/badge_generator.py scripts/
+
+    - name: Set build status from job outcome
+      run: |
+        if [ "${{ job.status }}" = "success" ]; then
+          echo "BUILD_STATUS=passing" >> $GITHUB_ENV
+        else
+          echo "BUILD_STATUS=failing" >> $GITHUB_ENV
+        fi
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13.3'
+
+    - name: Install dependencies
+      run: pip install anybadge pydantic python-dotenv
+
+    - name: Run badge generator
+      run: python scripts/badge_generator.py
+
+    - name: Copy Punk logo
+      run: cp badge_tools/assets/logo/Vector_Punk_1.png assets/badges/Vector_Punk_1.png
+
+    - name: Ensure README.md exists with header
+      run: |
+        if [ ! -f README.md ]; then
+          mkdir -p assets/badges
+          echo '<!--- Badges --->' > README.md
+          echo '[![Profile](./assets/badges/profile.svg)](https://github.com/electro-sb)' >> README.md
+          echo '<a href="https://github.com/electro-sb">' >> README.md
+          echo '  <img src="./assets/badges/Vector_Punk_1.png" alt="Punk Logo" width="20" style="vertical-align: middle;"/>' >> README.md
+          echo '</a>' >> README.md
+          echo '' >> README.md
+          echo '### Information' >> README.md
+          echo '[![Project](./assets/badges/Project.svg)](./README.md)' >> README.md
+          echo '[![Version](./assets/badges/version.svg)](./pyproject.toml)' >> README.md
+          echo '[![Git Commit](./assets/badges/git.svg)](./README.md)' >> README.md
+          echo '[![Last Updated](./assets/badges/updated.svg)](./README.md)' >> README.md
+          echo '' >> README.md
+          echo '### Other information' >> README.md
+          echo '[![Build Status](./assets/badges/build.svg)](./pyproject.toml)' >> README.md
+          echo '[![Documentation](./assets/badges/docs.svg)](./README.md)' >> README.md
+          echo '' >> README.md
+          echo '### License' >> README.md
+          echo '[![License](./assets/badges/license.svg)](./LICENSE.md)' >> README.md
+        fi
+
+    - name: Commit and push badge updates
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        git add assets/badges README.md
+        git diff --cached --quiet || git commit -m "Auto-update badges and README"
+        git push
