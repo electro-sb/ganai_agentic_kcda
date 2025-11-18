@@ -29,6 +29,9 @@ jobs:
     - name: Copy badge generator script
       run: cp badge_tools/scripts/badge_generator.py scripts/
 
+    - name: Copy custom svg script
+      run: cp badge_tools/scripts/custom_svg.py scripts/
+
     - name: Set build status from job outcome
       run: |
         if [ "${{ job.status }}" = "success" ]; then
@@ -43,7 +46,7 @@ jobs:
         python-version: '3.13.3'
 
     - name: Install dependencies
-      run: pip install anybadge pydantic python-dotenv
+      run: pip install anybadge pydantic python-dotenv svgwrite
 
     - name: Run badge generator
       run: python scripts/badge_generator.py
