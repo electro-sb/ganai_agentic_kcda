@@ -7,9 +7,6 @@ Copyright ©️ 2025 Sudipto Banerjee ([@electro-sb](https://github.com/electro-
 
 <!--- Badges--->
 [![Profile](./assets/badges/profile.svg)](https://github.com/electro-sb)
-<a href="https://github.com/electro-sb">
-  <img src="./assets/badges/Vector_Punk_1.png" alt="Punk Logo" width="20" style="vertical-align: middle;"/>
-</a>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal with the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
