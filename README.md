@@ -1,9 +1,5 @@
 <!--- Badges --->
 [![Profile](./assets/badges/profile.svg)](https://github.com/electro-sb)
-
-
-### Information
-<!--- Badges --->
 [![Project](./assets/badges/Project.svg)](./README.md)
 [![Version](./assets/badges/version.svg)](./pyproject.toml)
 
@@ -27,12 +23,3 @@
 OPENAI_API_KEY= xxxxxx
 GOOGLE_API_KEY= xxxxx
 ...
-
-
-### License
-<!--- Badges --->
-[![License](./assets/badges/license.svg)](./LICENSE.md) 
-
-### Contact
-<!--- Badges --->
-Sudipto Banerjee - [electro-sb](https://github.com/electro-sb)
