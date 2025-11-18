@@ -16,7 +16,6 @@
 [![License](./assets/badges/license.svg)](./LICENSE.md)
 
 
-
 ```shell
 OPENAI_API_KEY= xxxxxx
 GOOGLE_API_KEY= xxxxx
