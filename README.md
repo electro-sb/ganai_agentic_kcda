@@ -4,6 +4,7 @@
 [![Project](./assets/badges/Project.svg)](./README.md)
 [![Version](./assets/badges/version.svg)](./pyproject.toml)
 ###### Metadata:
+<!--- Badges --->
 [![Git Commit](./assets/badges/git.svg)](./README.md)
 [![Last Updated](./assets/badges/updated.svg)](./README.md)
 [![Build Status](./assets/badges/build.svg)](./pyproject.toml)
