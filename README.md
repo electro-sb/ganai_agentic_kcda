@@ -20,6 +20,7 @@ In case dotenvx is used; the secret should be injected using
 ```shell
 dotenvx run --  framework-to-run
 ```
+.env file should be in the root directory.
 
 ```shell
 OPENAI_API_KEY= xxxxxx
