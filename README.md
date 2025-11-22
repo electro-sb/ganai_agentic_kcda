@@ -15,6 +15,11 @@
 <!--- Badges --->
 [![License](./assets/badges/license.svg)](./LICENSE.md)
 
+### dotenv injection
+In case dotenvx is used; the secret should be injected using 
+```shell
+dotenvx run --  framework-to-run
+```
 
 ```shell
 OPENAI_API_KEY= xxxxxx
