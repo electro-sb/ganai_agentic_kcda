@@ -11,4 +11,5 @@ temp/
 # Virtual environments
 .env
 .venv
+.vscode
 *.txt
