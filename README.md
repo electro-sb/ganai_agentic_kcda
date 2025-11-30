@@ -7,13 +7,7 @@
 <!--- Badges --->
 [![Git Commit](./assets/badges/git.svg)](./README.md)
 [![Last Updated](./assets/badges/updated.svg)](./README.md)
-[![Build Status](./assets/badges/actions.svg)](./pyproject.toml)
-###### Documentation:
-<!--- Badges --->
-[![Documentation](./assets/badges/docs.svg)](./README.md)
-###### License:
-<!--- Badges --->
-[![License](./assets/badges/license.svg)](./LICENSE.md)
+
 
 # Erik - Math Tutor Agent 🎓
 
@@ -31,19 +25,19 @@ Erik follows a **hierarchical multi-agent architecture** with a root orchestrato
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│              Root Agent (Orchestrator)               │
+│              Root Agent (Orchestrator)              │
 │          "Erik - The Math Tutor Agent"              │
 └───────────┬─────────────────────────────────────────┘
             │
-            ├─────────────────┬──────────────────┬──────────────────┐
-            │                 │                  │                  │
+            ├─────────────────┬─────────────────┬──────────────────┐
+            │                 │                 │                  │
     ┌───────▼───────┐  ┌──────▼──────┐  ┌───────▼────────┐  ┌──────▼──────┐
     │   Wolfram     │  │    MaRDI    │  │  Web Search    │  │ Calculator  │
     │    Agent      │  │    Agent    │  │     Agent      │  │    Agent    │
     │  (Analyst)    │  │ (Archivist) │  │  (Researcher)  │  │  (Basic     │
     │               │  │             │  │                │  │   Math)     │
     └───────┬───────┘  └──────┬──────┘  └────────┬───────┘  └──────┬──────┘
-            │                 │                   │                 │
+            │                 │                  │                 │
     ┌───────▼───────┐  ┌──────▼──────┐  ┌────────▼───────┐  ┌──────▼──────┐
     │ wolfram_query │  │mardi_query  │  │  web_search    │  │ add, sub,   │
     │   MCP Tool    │  │  MCP Tool   │  │   MCP Tool     │  │ mul, div,   │
@@ -380,8 +374,6 @@ python -m tutor_agent.agent
 
 ---
 
-## License
-
 <!--- Badges --->
 [![License](./assets/badges/license.svg)](./LICENSE.md)
 
@@ -391,11 +383,9 @@ python -m tutor_agent.agent
 
 - **Framework**: Google Agent Development Kit (ADK)
 - **APIs**: Wolfram Alpha, MaRDI Knowledge Graph, DuckDuckGo
-- **Development**: Part of Google GenAI November 2025 Training
+- **Development**: Capstone Project submission (Google GenAI November 2025 Training)
 
 ---
-
 ## Contact
-
-For questions or contributions, please [specify contact method].
+[![Profile](./assets/badges/github.svg)](https://github.com/electro-sb)
 
