@@ -1,12 +1,21 @@
 [project]
-name = "kaggle-genai-nov"
-version = "0.1.1"
-description = "Add your description here"
+name = "kaggle-genai-nov-submission"
+version = "1.0.0"
+description = "A Helper Agent for studying Math."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "ddgs>=9.9.2",
     "dotenvx>=0.0.0",
-    "google-adk>=1.18.0",
+    "fastapi>=0.118.3",
+    "fastmcp>=2.13.1",
+    "google-adk[a2a,eval]>=1.18.0",
     "google-genai>=1.50.1",
+    "httpx>=0.28.1",
+    "langchain>=1.0.8",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=3.1.0",
+    "sparqlwrapper>=2.0.0",
     "svgwrite>=1.4.3",
+    "typing>=3.10.0.0",
 ]
