@@ -387,5 +387,5 @@ python -m tutor_agent.agent
 
 ---
 ## Contact
-[![Profile](./assets/badges/github.svg)](https://github.com/electro-sb)
+[![Profile](./assets/badges/GitHub.svg)](https://github.com/electro-sb)
 

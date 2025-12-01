@@ -135,14 +135,16 @@ mcp_duckduckgo = McpToolset(
 )
 #-----------------------------------------------------------------
 # Read Prompts
+# Hardcoding path for mock eval class to work
+# TODO: Fix this for production
 #-----------------------------------------------------------------
-with open("./tutor_agent/prompts/wolfram_prompt.md", "r") as f:
+with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/wolfram_prompt.md", "r") as f:
     wolfram_prompt = f.read()
 
-with open("./tutor_agent/prompts/mardi_prompt.md", "r") as f:
+with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/mardi_prompt.md", "r") as f:
     mardi_prompt = f.read()
 
-with open("./tutor_agent/prompts/orchastrator_prompt.md", "r") as f:
+with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/orchastrator_prompt.md", "r") as f:
     root_prompt = f.read()
 
 #-----------------------------------------------------------------

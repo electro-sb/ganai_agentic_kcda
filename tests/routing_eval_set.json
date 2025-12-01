@@ -1,0 +1,129 @@
+{
+    "eval_set_id": "routing_test_set",
+    "eval_cases": [
+        {
+            "eval_id": "case_wolfram_01",
+            "conversation": [
+                {
+                    "user_content": {
+                        "parts": [
+                            {
+                                "text": "Calculate the derivative of x^3 + 5x"
+                            }
+                        ]
+                    },
+                    "final_response": {
+                        "parts": [
+                            {
+                                "text": "MATCH_WOLFRAM"
+                            }
+                        ]
+                    },
+                    "intermediate_data": {
+                        "tool_uses": [
+                            {
+                                "name": "call_wolfram",
+                                "args": {
+                                    "query": "derivative of x^3 + 5x"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "eval_id": "case_mardi_01",
+            "conversation": [
+                {
+                    "user_content": {
+                        "parts": [
+                            {
+                                "text": "Find the MaRDI dataset ID for thermodynamics"
+                            }
+                        ]
+                    },
+                    "final_response": {
+                        "parts": [
+                            {
+                                "text": "MATCH_MARDI"
+                            }
+                        ]
+                    },
+                    "intermediate_data": {
+                        "tool_uses": [
+                            {
+                                "name": "call_mardi",
+                                "args": {
+                                    "query": "MaRDI dataset ID for thermodynamics"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "eval_id": "case_calc_01",
+            "conversation": [
+                {
+                    "user_content": {
+                        "parts": [
+                            {
+                                "text": "What is 25 + 25?"
+                            }
+                        ]
+                    },
+                    "final_response": {
+                        "parts": [
+                            {
+                                "text": "MATCH_CALC"
+                            }
+                        ]
+                    },
+                    "intermediate_data": {
+                        "tool_uses": [
+                            {
+                                "name": "call_calculator",
+                                "args": {
+                                    "query": "25 + 25"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "eval_id": "case_search_01",
+            "conversation": [
+                {
+                    "user_content": {
+                        "parts": [
+                            {
+                                "text": "Who won the cricket match yesterday?"
+                            }
+                        ]
+                    },
+                    "final_response": {
+                        "parts": [
+                            {
+                                "text": "MATCH_SEARCH"
+                            }
+                        ]
+                    },
+                    "intermediate_data": {
+                        "tool_uses": [
+                            {
+                                "name": "call_web_search",
+                                "args": {
+                                    "query": "Who won the cricket match yesterday?"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

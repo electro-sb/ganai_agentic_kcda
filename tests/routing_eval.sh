@@ -1,0 +1,1 @@
+adk eval ./routing_test ./routing_eval_set.json --config_file_path=./test_config.json --print_detailed_results
