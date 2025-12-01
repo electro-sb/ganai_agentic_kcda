@@ -8,7 +8,7 @@
 
 In the rapidly evolving landscape of AI-powered education, creating an intelligent tutoring system that can handle diverse mathematical queries—from simple arithmetic to complex calculus—presents unique architectural challenges. How do you build a system that knows when to use computational engines like Wolfram Alpha versus when to perform basic calculations? How do you integrate multiple specialized tools while maintaining a clean, modular architecture?
 
-This article chronicles the development of **Erik**, a multi-agent math tutoring system built using Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP). We'll explore the architectural decisions, technical challenges, and implementation patterns that make Erik an effective demonstration of modern agentic AI systems.
+This article chronicles the development of **Erik**, a multi-agent math tutoring system built using Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP). This article explores the architectural decisions, technical challenges, and implementation patterns that make Erik an effective demonstration of modern agentic AI systems.
 
 *(insert image)*
 
@@ -16,7 +16,7 @@ This article chronicles the development of **Erik**, a multi-agent math tutoring
 
 ## The Problem Space
 
-Traditional chatbots often struggle with mathematical queries because they try to be generalists. They might hallucinate numerical answers, fail to access authoritative mathematical references, or use heavyweight computational tools for trivial calculations. We needed a system that could:
+Traditional chatbots often struggle with mathematical queries because they try to be generalists. They might hallucinate numerical answers, fail to access authoritative mathematical references, or use heavyweight computational tools for trivial calculations. The system needed to:
 
 1. **Route intelligently**: Direct queries to the most appropriate computational resource
 2. **Access authoritative sources**: Query mathematical knowledge graphs and computational engines
@@ -71,7 +71,7 @@ This pattern provides several advantages:
 
 The **Model Context Protocol** is an open standard for connecting AI models to external data sources and tools. Think of it as a universal adapter that allows LLMs to interact with databases, APIs, and computational engines through a standardized interface.
 
-In Erik's architecture, MCP serves as the bridge between our agents and external computational resources:
+In Erik's architecture, MCP serves as the bridge between the agents and external computational resources:
 
 ```python
 mcp_wolfram = McpToolset(
@@ -88,7 +88,7 @@ mcp_wolfram = McpToolset(
 
 ### Why MCP Over Direct API Calls?
 
-We chose MCP over traditional API integration for several critical reasons:
+MCP was chosen over traditional API integration for several critical reasons:
 
 #### 1. **Modularity and Reusability**
 
@@ -159,7 +159,7 @@ def wolfram_query(query: str) -> str:
 
 The **MaRDI Portal** is a Wikibase instance containing structured mathematical knowledge, including formulas from the Digital Library of Mathematical Functions (DLMF).
 
-**Technical Challenge**: MaRDI returns formulas as **MathML with embedded LaTeX annotations**. We needed to extract clean LaTeX for LLM consumption.
+**Technical Challenge**: MaRDI returns formulas as **MathML with embedded LaTeX annotations**. Clean LaTeX needed to be extracted for LLM consumption.
 
 **Solution**: A sophisticated LaTeX extraction pipeline:
 
@@ -243,7 +243,7 @@ def sqrt(a: float) -> float:
 
 **Purpose**: Retrieve current, real-time information from the web
 
-**Initial Challenge**: We initially tried using Google's built-in search grounding, but encountered a critical limitation:
+**Initial Challenge**: Google's built-in search grounding was initially attempted, but a critical limitation was encountered:
 
 ```
 ValueError: Google search tool cannot be used with other tools in Gemini 1.x.
@@ -449,7 +449,7 @@ def divide(a: float, b: float) -> float:
 
 ### Testing Methodology
 
-We evaluated Erik across five dimensions:
+Erik was evaluated across five dimensions:
 
 1. **Agent Routing Accuracy**: Manual inspection of 50+ queries
 2. **MCP Tool Integration**: Connection stability over 100+ queries
@@ -593,7 +593,7 @@ evaluator = Evaluator(
 
 ## Conclusion
 
-Building Erik demonstrated that **hierarchical multi-agent architectures** combined with the **Model Context Protocol** provide a powerful pattern for creating specialized AI systems. By separating concerns across agents and tools, we achieved:
+Building Erik demonstrated that **hierarchical multi-agent architectures** combined with the **Model Context Protocol** provide a powerful pattern for creating specialized AI systems. By separating concerns across agents and tools, the following was achieved:
 
 - **Modularity**: Each component can evolve independently
 - **Reliability**: Failures are isolated and recoverable
