@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-# Welcome to My Project Site
+# Welcome to ganai_agentic_kcda
 
 This site hosts documentation and updates.
 

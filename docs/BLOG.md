@@ -6,7 +6,7 @@ permalink: /blog/
 
 # Project Blog
 
-Welcome to my project blog!
-
-## First Entry
-project details
+{% for post in site.posts %}
+- [{{ post.title }}]({{ post.url }}) <br>
+  {{ post.date | date: "%Y-%m-%d" }}
+{% endfor %}
