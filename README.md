@@ -301,27 +301,28 @@ python -m tutor_agent.agent
 **Question**: "What is the integral of sin(x) from 0 to π?"
 
 **Answer**: *(See demonstration GIF)*
-
+![Wolfram GIF](./assets/screenshots/WolframQuery.gif)
 ---
 
 ### Example 2: MaRDI Portal Query
 **Question**: "Find me the references of Gamma Function from MaRDI portal"
 
 **Answer**: *(See demonstration GIF)*
-
+![Mardi GIF](./assets/screenshots/MardiQuery.gif)
 ---
 
 ### Example 3: Trivial Math
 **Question**: "What is the square root of 64?"
 
 **Answer**: *(See demonstration GIF)*
-
+![Calculator GIF](./assets/screenshots/CalculatorQuery.gif)
 ---
 
 ### Example 4: General Information
 **Question**: "Who is the current President of France?"
 
 **Answer**: *(See demonstration GIF)*
+![Web Search GIF](./assets/screenshots/WebQuery.gif)
 
 ---
 
