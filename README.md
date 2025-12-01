@@ -308,7 +308,7 @@ python -m tutor_agent.agent
 **Question**: "Find me the references of Gamma Function from MaRDI portal"
 
 **Answer**: *(See demonstration GIF)*
-![Mardi GIF](./assets/screenshots/MaRDIQuery.gif)
+![Mardi GIF](./assets/screenshots/MaRDIquery.gif)
 ---
 
 ### Example 3: Trivial Math
