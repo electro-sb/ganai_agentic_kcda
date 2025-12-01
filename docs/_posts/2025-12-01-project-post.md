@@ -1,6 +1,10 @@
-# Building Erik: A Multi-Agent Math Tutor with Google ADK and MCP
+---
+layout:post
+title: "Building Erik, A Multi-Agent Math Tutor with Google ADK and MCP"
+date: 2025-12-01
+---
 
-**A Deep Dive into Hierarchical Agent Architecture, Model Context Protocol, and Intelligent Task Routing**
+### A Deep Dive into Hierarchical Agent Architecture, Model Context Protocol, and Intelligent Task Routing
 
 ---
 
