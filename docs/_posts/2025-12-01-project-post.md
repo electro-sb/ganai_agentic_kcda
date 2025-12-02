@@ -14,7 +14,7 @@ In the rapidly evolving landscape of AI-powered education, creating an intellige
 
 This article chronicles the development of **Erik**, a multi-agent math tutoring system built using Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP). This article explores the architectural decisions, technical challenges, and implementation patterns that make Erik an effective demonstration of modern agentic AI systems.
 
-*(insert image)*
+![Erik](./assets/logo/Eric_Card.png)
 
 ---
 

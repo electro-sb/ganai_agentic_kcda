@@ -3,3 +3,19 @@ description: Updates on the project
 remote_theme: jekyll/minima
 baseurl: "/ganai_agentic_kcda"
 url: "https://electro-sb.github.io"
+
+# Author information for feed
+author:
+  name: electro-sb
+  email: your-email@example.com  # Optional, remove if you don't want to share
+
+# Feed configuration
+feed:
+  path: feed.xml
+  excerpt_only: false
+
+# Social links (optional - appears in footer)
+github_username: electro-sb
+
+# Show excerpts on home page
+show_excerpts: true
