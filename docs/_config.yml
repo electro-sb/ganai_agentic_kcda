@@ -1,3 +1,4 @@
 title: ganai_agentic_kcda project blog
 description: Updates on the project
-theme: cayman   # GitHub Pages supports built-in themes like minima, cayman, etc.
+theme: minima
+remote_theme: jekyll/minima
