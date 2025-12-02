@@ -10,6 +10,7 @@
 
 
 # Erik - Math Tutor Agent 🎓
+![Erik](./assets/logo/Eric_Card.png)
 
 ## Overview
 

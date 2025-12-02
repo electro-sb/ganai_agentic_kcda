@@ -7,4 +7,6 @@ title: Home
 
 This site hosts documentation and updates.
 
-👉 [Read the Blog](./BLOG.md)
+📖 [Project README](https://github.com/electro-sb/ganai_agentic_kcda/blob/main/README.md)
+
+👉 [Read the Blog]({{ "/blog/" | relative_url }})
