@@ -1,3 +1,5 @@
 title: ganai_agentic_kcda project blog
 description: Updates on the project
 remote_theme: jekyll/minima
+baseurl: "/ganai_agentic_kcda"
+url: "https://electro-sb.github.io"
