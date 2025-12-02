@@ -5,10 +5,10 @@ title: Home
 
 # Erik - Math Tutor Agent 🎓
 
-![Project Badge]({{ "/assets/badges/Project.svg" | relative_url }})
+<!-- ![Project Badge]({{ "/assets/badges/Project.svg" | relative_url }})
 ![Version Badge]({{ "/assets/badges/version.svg" | relative_url }})
 ![License Badge]({{ "/assets/badges/license.svg" | relative_url }})
-![Build Badge]({{ "/assets/badges/build.svg" | relative_url }})
+![Build Badge]({{ "/assets/badges/build.svg" | relative_url }}) -->
 
 ---
 
