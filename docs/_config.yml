@@ -4,10 +4,15 @@ remote_theme: jekyll/minima
 baseurl: "/ganai_agentic_kcda"
 url: "https://electro-sb.github.io"
 
+# Plugins (required for GitHub Pages)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
 # Author information for feed
 author:
   name: electro-sb
-  email: your-email@example.com  # Optional, remove if you don't want to share
+  email: https://github.com/electro-sb
 
 # Feed configuration
 feed:
