@@ -1,13 +1,12 @@
 [![Profile](./assets/badges/profile.svg)](https://github.com/electro-sb)
 ###### Project Information:
 <!--- Badges --->
-[![Project](./assets/badges/Project.svg)](./README.md)
+[![Project](./assets/badges/Project.svg)](https://electro-sb.github.io/ganai_agentic_kcda/)
 [![Version](./assets/badges/version.svg)](./pyproject.toml)
 ###### Metadata:
 <!--- Badges --->
 [![Git Commit](./assets/badges/git.svg)](./README.md)
 [![Last Updated](./assets/badges/updated.svg)](./README.md)
-
 
 # Erik - Math Tutor Agent 🎓
 ![Erik](./assets/logo/Eric_Card.png)
@@ -353,7 +352,7 @@ See [`a2a_flow/a2a_client/PROMPT_GUIDE.md`](./a2a_flow/a2a_client/PROMPT_GUIDE.m
 If server processes become orphaned:
 ```bash
 cd a2a_flow
-bash sweep_orphans_opt.sh 8001
+bash sweep_orphans_opt.sh
 ```
 
 ---
