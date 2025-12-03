@@ -2,18 +2,14 @@
 .gitignore
 .dockerignore
 .env
-.venv
-__pycache__
+.venv/
+__pycache__/
 *.pyc
 *.pyo
 *.pyd
 .DS_Store
-README.md
-LICENSE.md
 docs/
 tests/
 assets/
-deploy_cloudrun.sh
-container_test.sh
-docker-compose.yaml
-Dockerfile
+# Explicitly include Dockerfile just in case
+!Dockerfile

@@ -313,8 +313,8 @@ You can deploy Erik as a serverless application on Google Cloud Run.
 1. **Run the Deployment Script:**
    We provide a helper script to streamline deployment.
    ```bash
-   chmod +x deploy_cloudrun.sh
-   ./deploy_cloudrun.sh
+   chmod +x deploy_cloudrunlaunch.sh
+   ./deploy_cloudrunlaunch.sh
    ```
 
 2. **Follow Prompts:**
@@ -326,7 +326,7 @@ You can deploy Erik as a serverless application on Google Cloud Run.
 3. **Access the Service:**
    Once deployed, the script will output the service URL.
 
-   ![Cloud Run Deployment Demo](PLACEHOLDER_FOR_CLOUDRUN_DEPLOYMENT_GIF)
+   ![Cloud Run Deployment Demo](./assets/screenshots/CloudRunDeploy.gif)
 
 ---
 

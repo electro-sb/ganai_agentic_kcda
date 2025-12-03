@@ -1,6 +1,6 @@
 [project]
 name = "kaggle-genai-nov-submission"
-version = "1.0.7"
+version = "1.1.0"
 description = "A Helper Agent for studying Math."
 readme = "README.md"
 requires-python = ">=3.13"

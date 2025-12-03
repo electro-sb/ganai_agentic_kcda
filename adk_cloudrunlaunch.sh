@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Cloud Run Deployment Script for Erik (Math Tutor Agent)
-# Integrates .env loading, API enablement, and deployment.
+# Uses Dockerfile in the current directory, loads API keys from .env,
+# enables required APIs, and deploys with 4Gi memory.
 
 set -e
 
@@ -25,13 +26,16 @@ echo "--------------------------------------------------"
 
 # Get Project ID
 current_project=$(gcloud config get-value project 2>/dev/null)
-read -p "Enter Google Cloud Project ID [$current_project]: " PROJECT_ID
+read -p "Enter Google Cloud Project ID [${current_project}]: " PROJECT_ID
 PROJECT_ID=${PROJECT_ID:-$current_project}
 
 if [ -z "$PROJECT_ID" ]; then
     echo "❌ Error: Project ID is required."
     exit 1
 fi
+
+# Make sure gcloud core/project is set, to avoid "project property is empty" errors
+gcloud config set project "$PROJECT_ID" >/dev/null
 
 # Get Region
 read -p "Enter Region [us-central1]: " REGION
@@ -41,8 +45,8 @@ REGION=${REGION:-us-central1}
 SERVICE_NAME="erik-math-tutor"
 
 echo "✅ Using Project: $PROJECT_ID"
-echo "✅ Using Region: $REGION"
-echo "✅ Service Name: $SERVICE_NAME"
+echo "✅ Using Region:  $REGION"
+echo "✅ Service Name:  $SERVICE_NAME"
 
 # --------------------------------------------------
 # 2. Enable Required APIs (One-time setup)
@@ -104,14 +108,15 @@ if [ -z "$WOLFRAM_KEY" ] || [ -z "$GOOGLE_KEY" ]; then
 fi
 
 # --------------------------------------------------
-# 4. Deployment
+# 4. Deployment (Dockerfile-based)
 # --------------------------------------------------
 echo "--------------------------------------------------"
-echo "☁️  Deploying to Cloud Run..."
+echo "☁️  Deploying to Cloud Run (using Dockerfile)..."
 echo "--------------------------------------------------"
 
-# Note: --source . uses Google Cloud Buildpacks to automatically detect language.
-# Ensure your app listens on port 9000 (as specified below).
+# --source=. will detect the Dockerfile in the current directory and use it
+# instead of buildpacks. [web:150]
+# Memory is set to 4Gi to give headroom for MCP subagents.
 
 gcloud run deploy "$SERVICE_NAME" \
     --project="$PROJECT_ID" \
@@ -121,11 +126,11 @@ gcloud run deploy "$SERVICE_NAME" \
     --allow-unauthenticated \
     --min-instances=0 \
     --max-instances=1 \
-    --memory=2Gi \
+    --memory=4Gi \
     --cpu=1 \
     --set-env-vars="WOLFRAM_API_KEY=$WOLFRAM_KEY,GOOGLE_API_KEY=$GOOGLE_KEY"
 
 echo "--------------------------------------------------"
 echo "🎉 Deployment Complete!"
 echo "--------------------------------------------------"
-echo "You can now access Erik at the Service URL provided above."
+echo "You can now access Erik at the Service URL printed above."
