@@ -18,6 +18,24 @@
 
 The system leverages multiple computational engines (Wolfram Alpha, MaRDI Knowledge Graph, DuckDuckGo Search) and combines them through a sophisticated orchestration layer to provide accurate, step-by-step mathematical assistance.
 
+## Table of Contents
+
+- [Architecture](#architecture)
+- [Agent Descriptions](#agent-descriptions)
+- [MCP Tool Servers](#mcp-tool-servers)
+- [Workflow: How a Query is Processed](#workflow-how-a-query-is-processed)
+- [Technical Stack](#technical-stack)
+- [Setup Instructions](#setup-instructions)
+- [Project Structure](#project-structure-important-files)
+- [A2A Client - Agent-to-Agent Communication](#a2a-client---agent-to-agent-communication)
+- [Key Design Decisions](#key-design-decisions)
+- [Example Usage](#example-usage)
+- [Tests and Evaluation](#tests-and-evaluation)
+- [Future Improvements](#future-improvements)
+- [Troubleshooting](#troubleshooting)
+- [Credits](#credits)
+
+
 ---
 
 ## Architecture
@@ -268,6 +286,72 @@ python -m tutor_agent.agent
 ./
 ├── README.md
 ├── LICENSE.md
+```
+
+---
+
+## A2A Client - Agent-to-Agent Communication
+
+Erik can be accessed remotely via the **Agent-to-Agent (A2A) protocol**, allowing other agents to use Erik as a specialized math tutor service.
+
+### Architecture
+
+```
+User → Math Student Client (a2a_client) → Erik Tutor (a2a_tutor_serv)
+                                              ↓
+                                         Sub-agents:
+                                         - Wolfram Agent
+                                         - MaRDI Agent
+                                         - Calculator Agent
+                                         - Web Search Agent
+```
+
+### Components
+
+#### 1. **A2A Server** (`a2a_tutor_serv`)
+- Exposes Erik as an A2A service on port 8001
+- Provides agent card at `/.well-known/agent-card.json`
+- Same Erik agent with all capabilities
+
+#### 2. **A2A Client** (`a2a_client`)
+- Connects to Erik server using `RemoteA2aAgent`
+- Intelligent client that delegates math questions to Erik
+- Handles simple queries directly (greetings, meta questions)
+
+### Quick Start
+
+**Terminal 1** - Start Erik A2A Server:
+```bash
+cd a2a_flow
+python a2a_server_launch.py
+# Server runs on http://localhost:8001
+# Press Ctrl+C to stop
+```
+
+**Terminal 2** - Run Client with ADK UI:
+```bash
+cd a2a_flow/a2a_client
+adk web --port 9000
+# Open http://localhost:9000
+```
+
+### Client Prompt Design
+
+The client agent uses a carefully designed prompt with:
+- **Clear role definition**: Client interface, not a solver
+- **Explicit delegation rules**: When to use Erik vs. handle directly
+- **Concrete examples**: "What is 22 * 100?" → Delegate to Erik
+- **Structured workflow**: Receive → Analyze → Delegate → Relay → Follow up
+- **Quality guidelines**: Be transparent, efficient, helpful, accurate
+
+See [`a2a_flow/a2a_client/PROMPT_GUIDE.md`](./a2a_flow/a2a_client/PROMPT_GUIDE.md) for detailed prompt engineering explanation.
+
+### Cleanup
+
+If server processes become orphaned:
+```bash
+cd a2a_flow
+bash sweep_orphans_opt.sh 8001
 ```
 
 ---
