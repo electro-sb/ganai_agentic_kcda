@@ -11,6 +11,8 @@
 # Erik - Math Tutor Agent 🎓
 ![Erik](./assets/logo/Eric_Card.png)
 
+[PROJECT_BLOG](https://electro-sb.github.io/ganai_agentic_kcda/blog/)
+
 ## Overview
 
 **Erik** is an intelligent, multi-agent AI system designed to help users solve mathematical problems through a coordinated team of specialized agents. Built using Google's Agent Development Kit (ADK) and the Model Context Protocol (MCP), Erik demonstrates advanced agentic architecture with clear separation of concerns and intelligent task routing.
