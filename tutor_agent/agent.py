@@ -65,10 +65,13 @@ retry_config = types.HttpRetryOptions(
 #------------------------------------------------------------------
 # MCP Toolset
 #------------------------------------------------------------------
-WOLFRAM_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/wolfram_tools.py"
-MARDI_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/mardi_tools.py"
-CALCULATOR_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/calculator.py"
-DUCKDUCKGO_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/duckduckgo_tools.py"
+# Get the project root directory (parent of tutor_agent)
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+WOLFRAM_MCP_SERVER = os.path.join(PROJECT_ROOT, "mcp_tool_chest", "wolfram_tools.py")
+MARDI_MCP_SERVER = os.path.join(PROJECT_ROOT, "mcp_tool_chest", "mardi_tools.py")
+CALCULATOR_MCP_SERVER = os.path.join(PROJECT_ROOT, "mcp_tool_chest", "calculator.py")
+DUCKDUCKGO_MCP_SERVER = os.path.join(PROJECT_ROOT, "mcp_tool_chest", "duckduckgo_tools.py")
 #------------------------------------------------------------------
 # Wolfram MCP toolset wrapper
 #------------------------------------------------------------------
@@ -135,16 +138,18 @@ mcp_duckduckgo = McpToolset(
 )
 #-----------------------------------------------------------------
 # Read Prompts
-# Hardcoding path for mock eval class to work
-# TODO: Fix this for production
+# Hard coding fixed
 #-----------------------------------------------------------------
-with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/wolfram_prompt.md", "r") as f:
+# Get the prompts directory relative to this file
+PROMPTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prompts")
+
+with open(os.path.join(PROMPTS_DIR, "wolfram_prompt.md"), "r") as f:
     wolfram_prompt = f.read()
 
-with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/mardi_prompt.md", "r") as f:
+with open(os.path.join(PROMPTS_DIR, "mardi_prompt.md"), "r") as f:
     mardi_prompt = f.read()
 
-with open(f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/tutor_agent/prompts/orchastrator_prompt.md", "r") as f:
+with open(os.path.join(PROMPTS_DIR, "orchastrator_prompt.md"), "r") as f:
     root_prompt = f.read()
 
 #-----------------------------------------------------------------

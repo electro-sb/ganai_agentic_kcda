@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  tutor_agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: eric_math_tutor:latest
+    container_name: eric_math_tutor
+    ports:
+      - "9000:9000"
+    env_file:
+      - .env
+    restart: unless-stopped
+    # Optional: Add health check
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

@@ -25,6 +25,7 @@ The system leverages multiple computational engines (Wolfram Alpha, MaRDI Knowle
 - [Workflow: How a Query is Processed](#workflow-how-a-query-is-processed)
 - [Technical Stack](#technical-stack)
 - [Setup Instructions](#setup-instructions)
+- [Deployment](#deployment)
 - [Project Structure](#project-structure-important-files)
 - [A2A Client - Agent-to-Agent Communication](#a2a-client---agent-to-agent-communication)
 - [Key Design Decisions](#key-design-decisions)
@@ -258,6 +259,72 @@ adk web --port 9000 --verbose
 cd agent_test_bed
 python -m tutor_agent.agent
 ```
+
+---
+
+## Deployment
+
+### 1. Local Deployment (Docker)
+
+The easiest way to run Erik locally is using Docker Compose. This ensures all dependencies and the environment are correctly configured.
+
+**Prerequisites:**
+- Docker Desktop installed
+- Git
+
+**Steps:**
+
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd kaggle_genai_nov
+   ```
+
+2. **Configure Environment:**
+   Ensure your `.env` file is set up with your API keys (see [Configuration](#configuration)).
+
+3. **Start the Container:**
+   ```bash
+   docker compose up -d
+   ```
+
+4. **Access the Interface:**
+   Open your browser to [http://localhost:9000](http://localhost:9000).
+
+   ![Local Deployment Demo](./assets/screenshots/LocalContainerTest.gif)
+
+5. **Stop the Container:**
+   ```bash
+   docker compose down
+   ```
+
+### 2. Cloud Run Deployment
+
+You can deploy Erik as a serverless application on Google Cloud Run.
+
+**Prerequisites:**
+- Google Cloud Project
+- `gcloud` CLI installed and authenticated
+
+**Steps:**
+
+1. **Run the Deployment Script:**
+   We provide a helper script to streamline deployment.
+   ```bash
+   chmod +x deploy_cloudrun.sh
+   ./deploy_cloudrun.sh
+   ```
+
+2. **Follow Prompts:**
+   The script will ask for:
+   - Your Google Cloud Project ID
+   - Region (e.g., `us-central1`)
+   - API Keys (Wolfram, Google GenAI)
+
+3. **Access the Service:**
+   Once deployed, the script will output the service URL.
+
+   ![Cloud Run Deployment Demo](PLACEHOLDER_FOR_CLOUDRUN_DEPLOYMENT_GIF)
 
 ---
 

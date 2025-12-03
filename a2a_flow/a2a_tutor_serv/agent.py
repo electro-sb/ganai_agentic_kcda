@@ -64,6 +64,7 @@ retry_config = types.HttpRetryOptions(
 
 #------------------------------------------------------------------
 # MCP Toolset (These paths are hard coded, so they doesn't need to change)
+# TODO: Fix this for production
 #------------------------------------------------------------------
 WOLFRAM_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/wolfram_tools.py"
 MARDI_MCP_SERVER = f"{os.path.expandvars('$HOME')}/projects/kaggle_genai_nov/mcp_tool_chest/mardi_tools.py"
