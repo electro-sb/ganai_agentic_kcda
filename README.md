@@ -318,6 +318,8 @@ User → Math Student Client (a2a_client) → Erik Tutor (a2a_tutor_serv)
 - Intelligent client that delegates math questions to Erik
 - Handles simple queries directly (greetings, meta questions)
 
+![A2ARecording](./assets/screenshots/A2ARecording.gif)
+
 ### Quick Start
 
 **Terminal 1** - Start Erik A2A Server:
