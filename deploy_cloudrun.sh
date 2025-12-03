@@ -1,19 +1,24 @@
 #!/bin/bash
 
 # Cloud Run Deployment Script for Erik (Math Tutor Agent)
+# Integrates .env loading, API enablement, and deployment.
 
 set -e
 
 echo "🚀 Starting deployment for Erik - Math Tutor Agent..."
 
-# Check if gcloud is installed
+# --------------------------------------------------
+# 0. Prerequisites Check
+# --------------------------------------------------
 if ! command -v gcloud &> /dev/null; then
     echo "❌ Error: gcloud CLI is not installed."
     echo "Please install it from: https://cloud.google.com/sdk/docs/install"
     exit 1
 fi
 
+# --------------------------------------------------
 # 1. Configuration
+# --------------------------------------------------
 echo "--------------------------------------------------"
 echo "📋 Configuration"
 echo "--------------------------------------------------"
@@ -32,37 +37,81 @@ fi
 read -p "Enter Region [us-central1]: " REGION
 REGION=${REGION:-us-central1}
 
-# Get Service Name
+# Service Name
 SERVICE_NAME="erik-math-tutor"
 
 echo "✅ Using Project: $PROJECT_ID"
 echo "✅ Using Region: $REGION"
 echo "✅ Service Name: $SERVICE_NAME"
 
-# 2. API Keys
+# --------------------------------------------------
+# 2. Enable Required APIs (One-time setup)
+# --------------------------------------------------
+echo "--------------------------------------------------"
+echo "🛠️  Checking System Services..."
+echo "--------------------------------------------------"
+echo "Ensuring required Google Cloud APIs are enabled..."
+echo "(This may take a few moments if they are not already active)"
+
+gcloud services enable \
+    run.googleapis.com \
+    cloudbuild.googleapis.com \
+    artifactregistry.googleapis.com \
+    --project="$PROJECT_ID"
+
+echo "✅ APIs enabled."
+
+# --------------------------------------------------
+# 3. API Keys (Load from .env or Manual Input)
+# --------------------------------------------------
 echo "--------------------------------------------------"
 echo "🔑 API Keys"
 echo "--------------------------------------------------"
-echo "Please enter your API keys (input will be hidden):"
 
-read -s -p "Enter WOLFRAM_API_KEY: " WOLFRAM_KEY
-echo ""
+# Function to extract value from .env safely
+get_env_value() {
+    local key=$1
+    if [ -f .env ]; then
+        # Grep key, split at first '=', remove quotes
+        grep "^${key}=" .env | cut -d '=' -f2- | tr -d '"' | tr -d "'"
+    fi
+}
+
+# Attempt to load WOLFRAM_API_KEY
+WOLFRAM_KEY=$(get_env_value "WOLFRAM_API_KEY")
 if [ -z "$WOLFRAM_KEY" ]; then
-    echo "❌ Error: WOLFRAM_API_KEY is required."
-    exit 1
+    echo "⚠️  WOLFRAM_API_KEY not found in .env"
+    read -s -p "Enter WOLFRAM_API_KEY: " WOLFRAM_KEY
+    echo ""
+else
+    echo "✅ WOLFRAM_API_KEY loaded from .env"
 fi
 
-read -s -p "Enter GOOGLE_API_KEY (Gemini): " GOOGLE_KEY
-echo ""
+# Attempt to load GOOGLE_API_KEY
+GOOGLE_KEY=$(get_env_value "GOOGLE_API_KEY")
 if [ -z "$GOOGLE_KEY" ]; then
-    echo "❌ Error: GOOGLE_API_KEY is required."
+    echo "⚠️  GOOGLE_API_KEY not found in .env"
+    read -s -p "Enter GOOGLE_API_KEY (Gemini): " GOOGLE_KEY
+    echo ""
+else
+    echo "✅ GOOGLE_API_KEY loaded from .env"
+fi
+
+# Final Validation
+if [ -z "$WOLFRAM_KEY" ] || [ -z "$GOOGLE_KEY" ]; then
+    echo "❌ Error: Both API keys are required to proceed."
     exit 1
 fi
 
-# 3. Deployment
+# --------------------------------------------------
+# 4. Deployment
+# --------------------------------------------------
 echo "--------------------------------------------------"
 echo "☁️  Deploying to Cloud Run..."
 echo "--------------------------------------------------"
+
+# Note: --source . uses Google Cloud Buildpacks to automatically detect language.
+# Ensure your app listens on port 9000 (as specified below).
 
 gcloud run deploy "$SERVICE_NAME" \
     --project="$PROJECT_ID" \
@@ -79,4 +128,4 @@ gcloud run deploy "$SERVICE_NAME" \
 echo "--------------------------------------------------"
 echo "🎉 Deployment Complete!"
 echo "--------------------------------------------------"
-echo "You can now access Erik at the URL above."
+echo "You can now access Erik at the Service URL provided above."
